@@ -1,0 +1,6 @@
+module Pods_QiuQiu {
+  umbrella header "Pods-QiuQiu-umbrella.h"
+
+  export *
+  module * { export * }
+}
