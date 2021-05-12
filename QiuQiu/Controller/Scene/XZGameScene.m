@@ -7,7 +7,6 @@
 
 #import "XZGameScene.h"
 #import "XZChineseZodiacPoolService.h"
-#import "LDTipAlertView.h"
 #import "QiuQiu-Swift.h"
 #import "BombChineseZodiacNode.h"
 
@@ -152,25 +151,37 @@ static const NSInteger MAX_SPEED = 3;
 }
 
 - (void)gameOver{
-    
     NSInteger score = self.scoreLabel.text.integerValue;
     [XZGameCenterService saveHighScoreWithScore:score];
-    NSString * d = [NSString stringWithFormat:@"最高分 %ld", (long)score];
-    LDTipAlertView * tipAlertView = [[LDTipAlertView alloc] initWithMessage:d
-                                    buttonTitles:@[@"返回首页",@"再来一次"]];
-    [tipAlertView show];
+
+    if ([NSThread isMainThread]){
+        NSLog(@"isMainThread");
+        [self tipView];
+    }else{
+        NSLog(@"No MainThread");
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self tipView];
+        });
+    }
+}
+
+-(void)tipView{
+    NSInteger score = self.scoreLabel.text.integerValue;
+    NSString * scoreStr = [NSString stringWithFormat:@"得分： %ld", (long)score];
     __weak typeof(self) weakSelf = self;
-    [tipAlertView setCancelBlock:^{
-        [weakSelf.delegate mySceneDidFinish:weakSelf];
-    }];
-    
-    [tipAlertView setDefiniteBlock:^{
+    XZAlertView * view = [[XZAlertView alloc] init];
+    view.titleLabel.text = scoreStr;
+    view.completion = ^{
+        [weakSelf.delegate mySceneDidFinish];
+    };
+    view.gameCompletion = ^{
         CGSize size = [UIScreen mainScreen].bounds.size;
         XZGameScene *gameScene = [[XZGameScene alloc] initWithSize:size];
         gameScene.scaleMode = SKSceneScaleModeAspectFill;
-        [self.scene.view presentScene:gameScene];
-    }];
-
+        gameScene.delegate = weakSelf.delegate;
+        [weakSelf.scene.view presentScene:gameScene];
+    };
+    [view show];
 }
 
 - (void)stopGame{

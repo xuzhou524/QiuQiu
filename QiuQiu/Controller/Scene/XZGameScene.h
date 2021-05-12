@@ -16,5 +16,5 @@
 
 
 @protocol TCAMySceneDelegate <NSObject>
-- (void)mySceneDidFinish:(XZGameScene *)gameScene;
+- (void)mySceneDidFinish;
 @end

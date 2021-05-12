@@ -54,7 +54,17 @@ class FZImageView: UIImageView {
 }
 
 class Client: NSObject {
-
+    static let shared = Client()
+    private override init() {
+        super.init()
+    }
+    
+    var mainWindow:UIWindow {
+        get {
+            let array = UIApplication.shared.windows
+            return array.first ?? UIWindow()
+        }
+    }
 }
 
 

@@ -28,7 +28,7 @@ class PlayBubbleViewController: UIViewController,TCAMySceneDelegate {
         skView.presentScene(ga)
     }
     
-    func mySceneDidFinish(_ gameScene: XZGameScene!) {
+    func mySceneDidFinish() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 

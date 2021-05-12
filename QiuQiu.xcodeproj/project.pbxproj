@@ -30,7 +30,6 @@
 		53441B072628203A00A5EEB6 /* GameUserInfoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53441AE32628203A00A5EEB6 /* GameUserInfoConfig.swift */; };
 		53441B082628203A00A5EEB6 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53441AE52628203A00A5EEB6 /* Client.swift */; };
 		53441B092628203A00A5EEB6 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53441AE72628203A00A5EEB6 /* UITableView+Extension.swift */; };
-		53441B282628231700A5EEB6 /* LDTipAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53441B272628231700A5EEB6 /* LDTipAlertView.m */; };
 		53441B2C2628233700A5EEB6 /* UIColor+HZXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 53441B2B2628233700A5EEB6 /* UIColor+HZXColor.m */; };
 		53441B34262824E200A5EEB6 /* ChineseZodiacSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53441B31262824E200A5EEB6 /* ChineseZodiacSound.mp3 */; };
 		53441B35262824E200A5EEB6 /* PopSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53441B32262824E200A5EEB6 /* PopSound.mp3 */; };
@@ -44,6 +43,7 @@
 		53D19BD22629358500D4427F /* ChineseZodiacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D19BD12629358500D4427F /* ChineseZodiacViewController.swift */; };
 		53D19BD626293D1500D4427F /* KnowledgeWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D19BD526293D1500D4427F /* KnowledgeWindowViewController.swift */; };
 		53D19BDF2629592300D4427F /* ChineseZodiacCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D19BDE2629592300D4427F /* ChineseZodiacCollectionViewCell.swift */; };
+		53D90190264B5EA800FAD738 /* XZAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D9018F264B5EA800FAD738 /* XZAlertView.swift */; };
 		96970DEC1C0B7CF8F4B7CB0B /* libPods-QiuQiu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FBEF08D4072FC3797D46AC3 /* libPods-QiuQiu.a */; };
 /* End PBXBuildFile section */
 
@@ -74,8 +74,6 @@
 		53441AE32628203A00A5EEB6 /* GameUserInfoConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameUserInfoConfig.swift; sourceTree = "<group>"; };
 		53441AE52628203A00A5EEB6 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		53441AE72628203A00A5EEB6 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		53441B262628231700A5EEB6 /* LDTipAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDTipAlertView.h; sourceTree = "<group>"; };
-		53441B272628231700A5EEB6 /* LDTipAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDTipAlertView.m; sourceTree = "<group>"; };
 		53441B2A2628233700A5EEB6 /* UIColor+HZXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HZXColor.h"; sourceTree = "<group>"; };
 		53441B2B2628233700A5EEB6 /* UIColor+HZXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HZXColor.m"; sourceTree = "<group>"; };
 		53441B31262824E200A5EEB6 /* ChineseZodiacSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ChineseZodiacSound.mp3; sourceTree = "<group>"; };
@@ -95,6 +93,7 @@
 		53D19BD12629358500D4427F /* ChineseZodiacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseZodiacViewController.swift; sourceTree = "<group>"; };
 		53D19BD526293D1500D4427F /* KnowledgeWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeWindowViewController.swift; sourceTree = "<group>"; };
 		53D19BDE2629592300D4427F /* ChineseZodiacCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseZodiacCollectionViewCell.swift; sourceTree = "<group>"; };
+		53D9018F264B5EA800FAD738 /* XZAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZAlertView.swift; sourceTree = "<group>"; };
 		5FBEF08D4072FC3797D46AC3 /* libPods-QiuQiu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QiuQiu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DD98B060E62A4EBE9FB4B9 /* Pods-QiuQiu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiuQiu.release.xcconfig"; path = "Target Support Files/Pods-QiuQiu/Pods-QiuQiu.release.xcconfig"; sourceTree = "<group>"; };
 		C9C419006A77CD6824B195AA /* Pods-QiuQiu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiuQiu.debug.xcconfig"; path = "Target Support Files/Pods-QiuQiu/Pods-QiuQiu.debug.xcconfig"; sourceTree = "<group>"; };
@@ -217,8 +216,7 @@
 				53441AE32628203A00A5EEB6 /* GameUserInfoConfig.swift */,
 				536E7FD8262D174600E51747 /* XZGameDecorateConfig.swift */,
 				5318EC16262D7BAE00B22AC1 /* XZGameCenterService.swift */,
-				53441B262628231700A5EEB6 /* LDTipAlertView.h */,
-				53441B272628231700A5EEB6 /* LDTipAlertView.m */,
+				53D9018F264B5EA800FAD738 /* XZAlertView.swift */,
 				53441AE52628203A00A5EEB6 /* Client.swift */,
 			);
 			path = Util;
@@ -368,7 +366,6 @@
 				53441B412628256A00A5EEB6 /* XZGameScene.m in Sources */,
 				53441AF72628203A00A5EEB6 /* XZNavigationController.swift in Sources */,
 				53441B55262825CF00A5EEB6 /* ChineseZodiacNode.m in Sources */,
-				53441B282628231700A5EEB6 /* LDTipAlertView.m in Sources */,
 				53441AE92628203A00A5EEB6 /* HomeCardView.swift in Sources */,
 				53441AF52628203A00A5EEB6 /* HomeViewController.swift in Sources */,
 				53441B5D2628298C00A5EEB6 /* PlayBubbleViewController.swift in Sources */,
@@ -380,6 +377,7 @@
 				53441B072628203A00A5EEB6 /* GameUserInfoConfig.swift in Sources */,
 				53441AA326281F2200A5EEB6 /* AppDelegate.swift in Sources */,
 				53441B57262825CF00A5EEB6 /* BombChineseZodiacNode.m in Sources */,
+				53D90190264B5EA800FAD738 /* XZAlertView.swift in Sources */,
 				53441B042628203A00A5EEB6 /* UIColor+Create.swift in Sources */,
 				5315B977263017BA002234AE /* ZPScrollerScaleView.m in Sources */,
 				53441B4C262825B500A5EEB6 /* XZChineseZodiacPoolService.m in Sources */,
