@@ -234,7 +234,7 @@ extension HomeViewController {
     
     func checkLocalAuthenticated() {
         if !GKLocalPlayer.local.isAuthenticated {
-            print("没有授权，无法获取更多信息")
+            print("没有授权，无法获取更多信息，请点击右上角帮助中心")
             GameUserInfoConfig.shared.gameId = ""
             GameUserInfoConfig.shared.gameName = "生肖来了"
             sebWithoutAuthorizationViews()
