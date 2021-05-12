@@ -153,20 +153,6 @@ static const NSInteger MAX_SPEED = 3;
 - (void)gameOver{
     NSInteger score = self.scoreLabel.text.integerValue;
     [XZGameCenterService saveHighScoreWithScore:score];
-
-    if ([NSThread isMainThread]){
-        NSLog(@"isMainThread");
-        [self tipView];
-    }else{
-        NSLog(@"No MainThread");
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self tipView];
-        });
-    }
-}
-
--(void)tipView{
-    NSInteger score = self.scoreLabel.text.integerValue;
     NSString * scoreStr = [NSString stringWithFormat:@"得分： %ld", (long)score];
     __weak typeof(self) weakSelf = self;
     XZAlertView * view = [[XZAlertView alloc] init];
