@@ -11,12 +11,15 @@ import SwiftyStoreKit
 
 class UserViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    var isHaveBuy = false
+    
     var tableView: UITableView = {
         let tableView = UITableView();
         tableView.backgroundColor = UIColor(named: "color_theme")
         tableView.separatorStyle = .none
         
         regClass(tableView, cell: LeftTitleTableViewCell.self)
+        regClass(tableView, cell: LeftTitleBuyTableViewCell.self)
         
         return tableView
     }()
@@ -28,6 +31,11 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
         imageView.layer.masksToBounds = true
         return imageView
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        restorePurchases()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,20 +84,33 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = getCell(tableView, cell: LeftTitleTableViewCell.self, indexPath: indexPath)
-            cell.nodeNameLabel.text = ["去广告","选择生肖图案","知识墙","分享生肖来了"][indexPath.row]
-            let names = ["ic_setting","ic_setting","ic_setQiang","ic_share"]
-            cell.nodeImageView.image = UIImage(named: names[indexPath.row])?.withRenderingMode(.alwaysTemplate)
-            cell.isHiddenRightImage(hidden: false)
-            cell.summeryLabel.isHidden = true
             if indexPath.row == 0 {
+                let cell = getCell(tableView, cell: LeftTitleBuyTableViewCell.self, indexPath: indexPath)
+                cell.nodeImageView.image = UIImage(named: "ic_QuAd")?.withRenderingMode(.alwaysTemplate)
+                cell.isHiddenRightImage(hidden: false)
+                cell.summeryLabel.isHidden = true
                 cell.panel.addRoundedCorners(corners: [.topLeft,.topRight], radii: CGSize(width: 8, height: 8), rect: CGRect(x: 0, y: 0, width: kScreenWidth - 30, height: 64))
-            }else if (indexPath.row == 3){
-                cell.panel.addRoundedCorners(corners: [.bottomLeft,.bottomRight], radii: CGSize(width: 8, height: 8), rect: CGRect(x: 0, y: 0, width: kScreenWidth - 30, height: 64))
+                cell.nodeNameLabel.text = "去广告"
+                if self.isHaveBuy {
+                    cell.vipBtn.setTitle("已购买", for: .normal)
+                }else{
+                    cell.vipBtn.setTitle("购买", for: .normal)
+                }
+                return cell
             }else{
-                cell.panel.layer.mask = nil
+                let cell = getCell(tableView, cell: LeftTitleTableViewCell.self, indexPath: indexPath)
+                cell.nodeNameLabel.text = ["","选择生肖图案","知识墙","分享生肖来了"][indexPath.row]
+                let names = ["","ic_setting","ic_setQiang","ic_share"]
+                cell.nodeImageView.image = UIImage(named: names[indexPath.row])?.withRenderingMode(.alwaysTemplate)
+                cell.isHiddenRightImage(hidden: false)
+                cell.summeryLabel.isHidden = true
+                if (indexPath.row == 3){
+                    cell.panel.addRoundedCorners(corners: [.bottomLeft,.bottomRight], radii: CGSize(width: 8, height: 8), rect: CGRect(x: 0, y: 0, width: kScreenWidth - 30, height: 64))
+                }else{
+                    cell.panel.layer.mask = nil
+                }
+                return cell
             }
-            return cell
         }else{
             let cell = getCell(tableView, cell: LeftTitleTableViewCell.self, indexPath: indexPath)
             cell.nodeNameLabel.text = ["帮助中心","给个赞","隐私协议","版本号"][indexPath.row]
@@ -122,6 +143,9 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
+                if self.isHaveBuy {
+                    return
+                }
                 //再次验证
                 MBProgressHUD.showDefaultIndicator(withText: nil)
                 let receipt = AppleReceiptValidator(service: .production)
@@ -130,8 +154,8 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
                     case .success(let receipt):
                         MBProgressHUD.hideAllIndicator()
                         print("receipt--->\(receipt)")
-//                        GameDecorateConfig.shared.gameShuHeDialNum = 6
-//                        self.collectionView.reloadData()
+                        self.isHaveBuy = true
+                        self.tableView.reloadData()
                         break
                     case .error(let error):
                         print("error--->\(error)")
@@ -171,8 +195,8 @@ extension UserViewController{
             switch result {
             case .success(let purchase):
                 print("Purchase Success: \(purchase.productId)")
-//                GameDecorateConfig.shared.gameShuHeDialNum = 6
-//                self.collectionView.reloadData()
+                self.isHaveBuy = true
+                self.tableView.reloadData()
             case .error(let error):
                 switch error.code {
                 case .unknown: print("Unknown error. Please contact support")
@@ -213,8 +237,8 @@ extension UserViewController{
             if let sss = result.restoredPurchases as [Purchase]?  {
                 for score in sss {
                     if score.productId == "Watermelon_Pro" {
-//                        self.isHaveBuy = true
-//                        self.collectionView.reloadData()
+                        self.isHaveBuy = true
+                        self.tableView.reloadData()
                     }
                 }
             }
