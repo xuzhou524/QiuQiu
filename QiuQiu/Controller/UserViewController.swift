@@ -215,7 +215,7 @@ extension UserViewController{
         }
     }
     
-    //验证
+//    //验证
 //    func product() {
 //        let receipt = AppleReceiptValidator(service: .production)
 //        SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
