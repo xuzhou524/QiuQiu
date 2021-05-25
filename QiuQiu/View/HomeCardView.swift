@@ -67,7 +67,7 @@ class HomeCardView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         sebViews()
     }
     

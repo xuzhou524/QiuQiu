@@ -38,6 +38,12 @@ class HomeViewController: UIViewController,GKGameCenterControllerDelegate {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "color_theme")
         
+        if XZSettings.shared[.kHelpPop] != 1 {
+            self.present(HelpsViewController(), animated: true) {
+                XZSettings.shared[.kHelpPop] = 1
+            }
+        }
+        
         let rightBtn = UIButton()
         rightBtn.setImage(UIImage(named: "user")?.withRenderingMode(.alwaysTemplate), for: .normal)
         rightBtn.tintColor = UIColor(named: "color_title_black")

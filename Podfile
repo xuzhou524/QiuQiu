@@ -6,6 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 def pods
     pod 'SnapKit'
     pod 'SwiftyStoreKit'
+    pod 'DefaultsKit'
 end
 
 targetsArray = ['QiuQiu']

@@ -1,20 +1,24 @@
 PODS:
+  - DefaultsKit (0.2.0)
   - SnapKit (5.0.1)
   - SwiftyStoreKit (0.16.1)
 
 DEPENDENCIES:
+  - DefaultsKit
   - SnapKit
   - SwiftyStoreKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - DefaultsKit
     - SnapKit
     - SwiftyStoreKit
 
 SPEC CHECKSUMS:
+  DefaultsKit: 6c767941b2c3fe34c4d70e300e6c3b80c94964dd
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: 66d8e0bd06ae76d0fb5161a43c69e298c44246d3
+PODFILE CHECKSUM: 8a27813312833e109ea93047ea156f81283df3e1
 
 COCOAPODS: 1.10.1
