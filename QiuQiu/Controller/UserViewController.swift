@@ -7,6 +7,7 @@
 
 import UIKit
 import StoreKit
+import SwiftyStoreKit
 
 class UserViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
@@ -54,7 +55,7 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 3
+            return 4
         }
         return 4
     }
@@ -76,14 +77,14 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = getCell(tableView, cell: LeftTitleTableViewCell.self, indexPath: indexPath)
-            cell.nodeNameLabel.text = ["选择生肖图案","知识墙","分享生肖来了"][indexPath.row]
-            let names = ["ic_setting","ic_setQiang","ic_share"]
+            cell.nodeNameLabel.text = ["去广告","选择生肖图案","知识墙","分享生肖来了"][indexPath.row]
+            let names = ["ic_setting","ic_setting","ic_setQiang","ic_share"]
             cell.nodeImageView.image = UIImage(named: names[indexPath.row])?.withRenderingMode(.alwaysTemplate)
             cell.isHiddenRightImage(hidden: false)
             cell.summeryLabel.isHidden = true
             if indexPath.row == 0 {
                 cell.panel.addRoundedCorners(corners: [.topLeft,.topRight], radii: CGSize(width: 8, height: 8), rect: CGRect(x: 0, y: 0, width: kScreenWidth - 30, height: 64))
-            }else if (indexPath.row == 2){
+            }else if (indexPath.row == 3){
                 cell.panel.addRoundedCorners(corners: [.bottomLeft,.bottomRight], radii: CGSize(width: 8, height: 8), rect: CGRect(x: 0, y: 0, width: kScreenWidth - 30, height: 64))
             }else{
                 cell.panel.layer.mask = nil
@@ -121,10 +122,28 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
+                //再次验证
+                MBProgressHUD.showDefaultIndicator(withText: nil)
+                let receipt = AppleReceiptValidator(service: .production)
+                SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
+                    switch result {
+                    case .success(let receipt):
+                        MBProgressHUD.hideAllIndicator()
+                        print("receipt--->\(receipt)")
+//                        GameDecorateConfig.shared.gameShuHeDialNum = 6
+//                        self.collectionView.reloadData()
+                        break
+                    case .error(let error):
+                        print("error--->\(error)")
+                        self.buyProduct()
+                        break
+                    }
+                }
+            }else if indexPath.row == 1 {
                 self.navigationController?.pushViewController(ChineseZodiacViewController(), animated: true)
-            }else if (indexPath.row == 1){
-                self.navigationController?.pushViewController(KnowledgeWindowViewController(), animated: true)
             }else if (indexPath.row == 2){
+                self.navigationController?.pushViewController(KnowledgeWindowViewController(), animated: true)
+            }else if (indexPath.row == 3){
                 let activityController = UIActivityViewController(activityItems: ["https://apps.apple.com/cn/app/id1563693082" + " (分享来自@生肖来了) " ], applicationActivities: nil)
                 UIApplication.shared.windows.first?.rootViewController?.present(activityController, animated: true, completion: nil)
             }
@@ -143,4 +162,62 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
     }
     
+}
+
+extension UserViewController{
+    func buyProduct() {
+        SwiftyStoreKit.purchaseProduct("Watermelon_Pro", quantity: 1, atomically: true) { result in
+            MBProgressHUD.hideAllIndicator()
+            switch result {
+            case .success(let purchase):
+                print("Purchase Success: \(purchase.productId)")
+//                GameDecorateConfig.shared.gameShuHeDialNum = 6
+//                self.collectionView.reloadData()
+            case .error(let error):
+                switch error.code {
+                case .unknown: print("Unknown error. Please contact support")
+                case .clientInvalid: print("Not allowed to make the payment")
+                case .paymentCancelled: break
+                case .paymentInvalid: print("The purchase identifier was invalid")
+                case .paymentNotAllowed: print("The device is not allowed to make the payment")
+                case .storeProductNotAvailable: print("The product is not available in the current storefront")
+                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+                case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    //验证
+//    func product() {
+//        let receipt = AppleReceiptValidator(service: .production)
+//        SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
+//            switch result {
+//            case .success(let receipt):
+//             print("receipt--->\(receipt)")
+//                self.isHaveBuy = true
+//                self.collectionView.reloadData()
+//                break
+//            case .error(let error):
+//                print("error--->\(error)")
+//                break
+//            }
+//        }
+//    }
+    
+    func restorePurchases() {
+        SwiftyStoreKit.restorePurchases { (result) in
+            if let sss = result.restoredPurchases as [Purchase]?  {
+                for score in sss {
+                    if score.productId == "Watermelon_Pro" {
+//                        self.isHaveBuy = true
+//                        self.collectionView.reloadData()
+                    }
+                }
+            }
+        }
+    }
 }

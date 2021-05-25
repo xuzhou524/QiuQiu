@@ -9,3 +9,4 @@
 
 #import "XZGameScene.h"
 #import "ZPScrollerScaleView.h"
+#import "MBProgressHUD+ITTAdditions.h"
