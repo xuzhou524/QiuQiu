@@ -8,7 +8,6 @@ def pods
     pod 'SwiftyStoreKit'
     pod 'DefaultsKit'
     pod 'Google-Mobile-Ads-SDK'
-    pod 'SwiftyStoreKit'
     pod 'MBProgressHUD'
 end
 

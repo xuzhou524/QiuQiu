@@ -6,15 +6,13 @@
 //
 
 #import "QiuQiuSwift.h"
-
+#import "QiuQiu-Swift.h"
 @import GoogleMobileAds;
 
-@interface QiuQiuSwift()<GADFullScreenContentDelegate>{
-    
-    UIViewController * _adViewController;
-}
+@interface QiuQiuSwift()<GADFullScreenContentDelegate>
 
 @property (nonatomic, strong) UIWindow* window;
+@property (nonatomic, strong) UIViewController* adViewController;
 
 @property(nonatomic, strong) GADInterstitialAd *interstitial;
 
@@ -39,13 +37,13 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-//        #ifdef DEBUG
-//        #else
-//        NSString * i = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.xuzhou.advertising"];
-//        if ([i intValue] == 0) {
-//            [self views];
-//        }
-//        #endif
+        #ifdef DEBUG
+        #else
+        NSString * i = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.xuzhou.advertising"];
+        if ([i intValue] == 0) {
+            [self views];
+        }
+        #endif
     }
     return self;
 }
@@ -62,16 +60,11 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         
     }];
-    ///后台启动,二次开屏广告
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-        [self CheakAd];
-    }];
-    
+  
 }
 
 -(void)CheakAd{//这一部分的逻辑大家根据自身需求定制
     //谷歌插屏广告
-    
     GADRequest *request = [GADRequest request];
       [GADInterstitialAd loadWithAdUnitID:@"ca-app-pub-9353975206269682/3460534917"
                                       request:request
@@ -82,42 +75,12 @@
           }
           self.interstitial = ad;
           self.interstitial.fullScreenContentDelegate = self;
-          [self show];
-          [self.interstitial presentFromRootViewController:_adViewController];
+          [self.interstitial presentFromRootViewController:[UIApplication sharedApplication].windows.firstObject.rootViewController];
       }];
 }
 
-- (void)show{
-    ///初始化一个Window， 做到对业务视图无干扰。
-    UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    _adViewController = [UIViewController new];
-    window.rootViewController = _adViewController;
-    window.rootViewController.view.backgroundColor = [UIColor clearColor];
-    window.rootViewController.view.userInteractionEnabled = NO;
-    
-    ///设置为最顶层，防止 AlertView 等弹窗的覆盖
-    window.windowLevel = UIWindowLevelStatusBar + 1;
-    
-    ///默认为YES，当你设置为NO时，这个Window就会显示了
-    window.hidden = NO;
-    window.alpha = 1;
-    
-    ///防止释放，显示完后  要手动设置为 nil
-    self.window = window;
-}
-
 - (void)hide{
-    ///来个渐显动画
-    [_adViewController dismissViewControllerAnimated:YES completion:nil];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.window.alpha = 0;
-    } completion:^(BOOL finished) {
-        [self.window.subviews.copy enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [obj removeFromSuperview];
-        }];
-        self.window.hidden = YES;
-        self.window = nil;
-    }];
+    [[UIApplication sharedApplication].windows.firstObject.rootViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -GADInterstitialDelegate
