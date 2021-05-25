@@ -43,6 +43,7 @@
 		53B914DA265C8D5600F6EDB6 /* HelpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B914D9265C8D5600F6EDB6 /* HelpsViewController.swift */; };
 		53B914DC265C8D6900F6EDB6 /* WithoutAuthorizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B914DB265C8D6900F6EDB6 /* WithoutAuthorizationsView.swift */; };
 		53B914DE265C8DA500F6EDB6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B914DD265C8DA500F6EDB6 /* Settings.swift */; };
+		53B914E1265C93CC00F6EDB6 /* QiuQiuSwift.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B914E0265C93CC00F6EDB6 /* QiuQiuSwift.m */; };
 		53D19BD22629358500D4427F /* ChineseZodiacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D19BD12629358500D4427F /* ChineseZodiacViewController.swift */; };
 		53D19BD626293D1500D4427F /* KnowledgeWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D19BD526293D1500D4427F /* KnowledgeWindowViewController.swift */; };
 		53D19BDF2629592300D4427F /* ChineseZodiacCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D19BDE2629592300D4427F /* ChineseZodiacCollectionViewCell.swift */; };
@@ -96,6 +97,8 @@
 		53B914D9265C8D5600F6EDB6 /* HelpsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpsViewController.swift; sourceTree = "<group>"; };
 		53B914DB265C8D6900F6EDB6 /* WithoutAuthorizationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithoutAuthorizationsView.swift; sourceTree = "<group>"; };
 		53B914DD265C8DA500F6EDB6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		53B914DF265C93CC00F6EDB6 /* QiuQiuSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuQiuSwift.h; sourceTree = "<group>"; };
+		53B914E0265C93CC00F6EDB6 /* QiuQiuSwift.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuQiuSwift.m; sourceTree = "<group>"; };
 		53D19BD12629358500D4427F /* ChineseZodiacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseZodiacViewController.swift; sourceTree = "<group>"; };
 		53D19BD526293D1500D4427F /* KnowledgeWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeWindowViewController.swift; sourceTree = "<group>"; };
 		53D19BDE2629592300D4427F /* ChineseZodiacCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseZodiacCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				53441AA426281F2200A5EEB6 /* SceneDelegate.swift */,
 				53441AA626281F2200A5EEB6 /* ViewController.swift */,
 				53441B592628269100A5EEB6 /* QiuQiu-Bridging-Header.h */,
+				53B914DF265C93CC00F6EDB6 /* QiuQiuSwift.h */,
+				53B914E0265C93CC00F6EDB6 /* QiuQiuSwift.m */,
 				53441AA826281F2200A5EEB6 /* Main.storyboard */,
 				53441AAB26281F2500A5EEB6 /* Assets.xcassets */,
 				53441AAD26281F2500A5EEB6 /* LaunchScreen.storyboard */,
@@ -379,6 +384,7 @@
 				53441AF52628203A00A5EEB6 /* HomeViewController.swift in Sources */,
 				53441B5D2628298C00A5EEB6 /* PlayBubbleViewController.swift in Sources */,
 				5315B97A26301F77002234AE /* KnowledgeView.swift in Sources */,
+				53B914E1265C93CC00F6EDB6 /* QiuQiuSwift.m in Sources */,
 				53441B2C2628233700A5EEB6 /* UIColor+HZXColor.m in Sources */,
 				53441B062628203A00A5EEB6 /* UIViewController+Extension.swift in Sources */,
 				53D19BD22629358500D4427F /* ChineseZodiacViewController.swift in Sources */,

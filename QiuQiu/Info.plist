@@ -20,8 +20,18 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-9353975206269682~9412248484</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<string>ydx93a7ass.skadnetwork</string>
+		<string>2fnua5tdw4.skadnetwork</string>
+		<string>e5fvkxwrpn.skadnetwork</string>
+		<string>4fzdc2evr5.skadnetwork</string>
+		<string>cstr6suwn9.skadnetwork</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

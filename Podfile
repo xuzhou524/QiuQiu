@@ -7,6 +7,7 @@ def pods
     pod 'SnapKit'
     pod 'SwiftyStoreKit'
     pod 'DefaultsKit'
+    pod 'Google-Mobile-Ads-SDK'
 end
 
 targetsArray = ['QiuQiu']
