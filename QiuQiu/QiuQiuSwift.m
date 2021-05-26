@@ -38,6 +38,7 @@
     self = [super init];
     if (self) {
         #ifdef DEBUG
+        [self views];
         #else
         if (![XZGameDecorateConfig restorePurchases]) {
             [self views];
@@ -65,7 +66,7 @@
 -(void)CheakAd{//这一部分的逻辑大家根据自身需求定制
     //谷歌插屏广告
     GADRequest *request = [GADRequest request];
-      [GADInterstitialAd loadWithAdUnitID:@"ca-app-pub-9353975206269682/3460534917"
+      [GADInterstitialAd loadWithAdUnitID:@"ca-app-pub-9353975206269682/8480943219"
                                       request:request
                             completionHandler:^(GADInterstitialAd *ad, NSError *error) {
           if (error) {
