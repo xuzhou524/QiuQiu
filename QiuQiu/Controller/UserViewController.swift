@@ -34,7 +34,7 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        restorePurchases()
+        product()
     }
 
     override func viewDidLoad() {
@@ -154,8 +154,11 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
                     case .success(let receipt):
                         MBProgressHUD.hideAllIndicator()
                         print("receipt--->\(receipt)")
-                        self.isHaveBuy = true
-                        self.tableView.reloadData()
+                        let status: Int = receipt["status"] as! Int
+                        if status == 0 {
+                            self.isHaveBuy = true
+                            self.tableView.reloadData()
+                        }
                         break
                     case .error(let error):
                         print("error--->\(error)")
@@ -215,22 +218,25 @@ extension UserViewController{
         }
     }
     
-//    //验证
-//    func product() {
-//        let receipt = AppleReceiptValidator(service: .production)
-//        SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
-//            switch result {
-//            case .success(let receipt):
-//             print("receipt--->\(receipt)")
-//                self.isHaveBuy = true
-//                self.collectionView.reloadData()
-//                break
-//            case .error(let error):
-//                print("error--->\(error)")
-//                break
-//            }
-//        }
-//    }
+    //验证
+    func product() {
+        let receipt = AppleReceiptValidator(service: .production)
+        SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
+            switch result {
+            case .success(let receipt):
+             print("receipt--->\(receipt)")
+                let status: Int = receipt["status"] as! Int
+                if status == 0 {
+                    self.isHaveBuy = true
+                    self.tableView.reloadData()
+                }
+                break
+            case .error(let error):
+                print("error--->\(error)")
+                break
+            }
+        }
+    }
     
     func restorePurchases() {
         SwiftyStoreKit.restorePurchases { (result) in

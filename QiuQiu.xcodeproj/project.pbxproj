@@ -40,6 +40,7 @@
 		53441B57262825CF00A5EEB6 /* BombChineseZodiacNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 53441B52262825CF00A5EEB6 /* BombChineseZodiacNode.m */; };
 		53441B5D2628298C00A5EEB6 /* PlayBubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53441B5C2628298C00A5EEB6 /* PlayBubbleViewController.swift */; };
 		536E7FD9262D174600E51747 /* XZGameDecorateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536E7FD8262D174600E51747 /* XZGameDecorateConfig.swift */; };
+		53921F35265F324C0084F694 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53921F34265F324C0084F694 /* StoreKit.framework */; };
 		53B914DA265C8D5600F6EDB6 /* HelpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B914D9265C8D5600F6EDB6 /* HelpsViewController.swift */; };
 		53B914DC265C8D6900F6EDB6 /* WithoutAuthorizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B914DB265C8D6900F6EDB6 /* WithoutAuthorizationsView.swift */; };
 		53B914DE265C8DA500F6EDB6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B914DD265C8DA500F6EDB6 /* Settings.swift */; };
@@ -95,6 +96,7 @@
 		53441B592628269100A5EEB6 /* QiuQiu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QiuQiu-Bridging-Header.h"; sourceTree = "<group>"; };
 		53441B5C2628298C00A5EEB6 /* PlayBubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBubbleViewController.swift; sourceTree = "<group>"; };
 		536E7FD8262D174600E51747 /* XZGameDecorateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XZGameDecorateConfig.swift; sourceTree = "<group>"; };
+		53921F34265F324C0084F694 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		53B914D9265C8D5600F6EDB6 /* HelpsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpsViewController.swift; sourceTree = "<group>"; };
 		53B914DB265C8D6900F6EDB6 /* WithoutAuthorizationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithoutAuthorizationsView.swift; sourceTree = "<group>"; };
 		53B914DD265C8DA500F6EDB6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96970DEC1C0B7CF8F4B7CB0B /* libPods-QiuQiu.a in Frameworks */,
+				53921F35265F324C0084F694 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +279,7 @@
 		E765592CE0C526AD3F709102 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53921F34265F324C0084F694 /* StoreKit.framework */,
 				5FBEF08D4072FC3797D46AC3 /* libPods-QiuQiu.a */,
 			);
 			name = Frameworks;
