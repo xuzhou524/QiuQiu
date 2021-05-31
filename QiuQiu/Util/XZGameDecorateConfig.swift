@@ -21,9 +21,13 @@ class XZGameDecorateConfig: NSObject {
     }
     
     @objc static func restorePurchases() -> Bool {
-        var isRestore = false
         let receipt = AppleReceiptValidator(service: .production)
-        SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
+        return restorePurchaseCheck(validator: receipt)
+    }
+    
+    static func restorePurchaseCheck(validator: ReceiptValidator) -> Bool {
+        var isRestore = false
+        SwiftyStoreKit.verifyReceipt(using: validator) { (result) in
             switch result {
             case .success(let receipt):
              print("receipt--->\(receipt)")
@@ -34,6 +38,8 @@ class XZGameDecorateConfig: NSObject {
                     if inApp?.count ?? 0 > 0 {
                         isRestore = true
                     }
+                }else if status == 21007 {
+                    restorePurchaseCheck(validator: AppleReceiptValidator(service: .sandbox))
                 }
                 break
             case .error(let error):

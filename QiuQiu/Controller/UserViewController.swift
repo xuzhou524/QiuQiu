@@ -152,18 +152,20 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
                 SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
                     switch result {
                     case .success(let receipt):
-                        MBProgressHUD.hideAllIndicator()
                         print("receipt--->\(receipt)")
                         let status: Int = receipt["status"] as! Int
                         if status == 0 {
                             let appReceipt = receipt["receipt"] as? ReceiptInfo
                             let inApp = appReceipt?["in_app"] as? [ReceiptInfo]
                             if inApp?.count ?? 0 > 0 {
+                                MBProgressHUD.hideAllIndicator()
                                 self.isHaveBuy = true
                                 self.tableView.reloadData()
                             }else{
                                 self.buyProduct()
                             }
+                        }else if status == 21007 {
+                            self.sandbox()
                         }else{
                             self.buyProduct()
                         }
@@ -229,6 +231,31 @@ extension UserViewController{
     //验证
     func product() {
         let receipt = AppleReceiptValidator(service: .production)
+        SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
+            switch result {
+            case .success(let receipt):
+             print("receipt--->\(receipt)")
+                let status: Int = receipt["status"] as! Int
+                if status == 0 {
+                    let appReceipt = receipt["receipt"] as? ReceiptInfo
+                    let inApp = appReceipt?["in_app"] as? [ReceiptInfo]
+                    if inApp?.count ?? 0 > 0 {
+                        self.isHaveBuy = true
+                        self.tableView.reloadData()
+                    }
+                }else if status == 21007 {
+                    self.sandbox()
+                }
+                break
+            case .error(let error):
+                print("error--->\(error)")
+                break
+            }
+        }
+    }
+    
+    func sandbox(){
+        let receipt = AppleReceiptValidator(service: .sandbox)
         SwiftyStoreKit.verifyReceipt(using: receipt) { (result) in
             switch result {
             case .success(let receipt):
