@@ -27,7 +27,14 @@ class XZGameDecorateConfig: NSObject {
             switch result {
             case .success(let receipt):
              print("receipt--->\(receipt)")
-                isRestore = true
+                let status: Int = receipt["status"] as! Int
+                if status == 0 {
+                    let appReceipt = receipt["receipt"] as? ReceiptInfo
+                    let inApp = appReceipt?["in_app"] as? [ReceiptInfo]
+                    if inApp?.count ?? 0 > 0 {
+                        isRestore = true
+                    }
+                }
                 break
             case .error(let error):
                 print("error--->\(error)")

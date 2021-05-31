@@ -156,8 +156,16 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
                         print("receipt--->\(receipt)")
                         let status: Int = receipt["status"] as! Int
                         if status == 0 {
-                            self.isHaveBuy = true
-                            self.tableView.reloadData()
+                            let appReceipt = receipt["receipt"] as? ReceiptInfo
+                            let inApp = appReceipt?["in_app"] as? [ReceiptInfo]
+                            if inApp?.count ?? 0 > 0 {
+                                self.isHaveBuy = true
+                                self.tableView.reloadData()
+                            }else{
+                                self.buyProduct()
+                            }
+                        }else{
+                            self.buyProduct()
                         }
                         break
                     case .error(let error):
@@ -227,8 +235,12 @@ extension UserViewController{
              print("receipt--->\(receipt)")
                 let status: Int = receipt["status"] as! Int
                 if status == 0 {
-                    self.isHaveBuy = true
-                    self.tableView.reloadData()
+                    let appReceipt = receipt["receipt"] as? ReceiptInfo
+                    let inApp = appReceipt?["in_app"] as? [ReceiptInfo]
+                    if inApp?.count ?? 0 > 0 {
+                        self.isHaveBuy = true
+                        self.tableView.reloadData()
+                    }
                 }
                 break
             case .error(let error):
