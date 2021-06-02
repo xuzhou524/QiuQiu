@@ -188,10 +188,8 @@ class UserViewController: UIViewController,UITableViewDataSource,UITableViewDele
             if indexPath.row == 0 {
                 self.navigationController?.pushViewController(HelpViewController(), animated: true)
             }else if indexPath.row == 1 {
-                #if DEBUG
-                #else
-                    SKStoreReviewController.requestReview()
-                #endif
+                let  urlString = "itms-apps://itunes.apple.com/app/id1563693082?action=write-review"
+                UIApplication.shared.open(URL.init(string: urlString)!, options: [:], completionHandler: nil)
             }else if indexPath.row == 2 {
                 let webViewVC = BPYWebViewController.init(url: "https://www.gezhipu.com/shengxiao.pdf", titleStr: "隐私协议")
                 self.navigationController?.pushViewController(webViewVC, animated: true)
